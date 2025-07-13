@@ -1,0 +1,109 @@
+
+.info {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+
+    &-left {
+        @include flexCenter(47px);
+        flex-direction: row;
+
+    }
+    &-left>&-item {        
+        @include flexCenter(7px);
+        font-family: var(--big-shoulders-display);
+        font-size: 1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, .6);
+
+        & span {
+            color: var(--clr-secondary);
+            font-size: 1.6rem;
+            line-height: 1;
+        }
+        & button {
+            color: var(--clr-primary);
+            font-weight: bold;
+            font-size: 1.3rem;
+            line-height: 1;
+            width: 33px;
+            height: 33px;
+            margin-right: 6px;
+            border: 1px solid rgba(255, 255, 255, .29)
+        }
+
+        & button:hover {
+            border: 1px solid var(--clr-primary);
+            background: url(/page-container.webp) no-repeat;
+            background-position: center;
+        }
+        & button:active {
+            font-size: 2rem;
+            border-style: inset;
+        }
+    }
+    &-right {
+        @include flexCenter(27px);
+        flex-direction: row;
+
+    }
+    &-right>&-item.timer>.typewriter>span {
+        font-family: var(--font-basic);
+        font-size: .87rem;
+        font-weight: normal;
+        text-transform: uppercase;
+        color: var(--clr-muted);
+
+        & b {
+            color: var(--clr-text);
+        }
+    }
+}
+
+
+
+#coin-template {
+    display: none;
+}
+
+.coin {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-image: url('/coin.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+    animation: floatUpBack .3s ease-out forwards;
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: rgba(255, 0, 0, 0.6);
+        z-index: 1;
+      }
+}
+
+@keyframes floatUpBack {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translate(0, -20px) scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(0, 0) scale(0.5);
+        opacity: 0;
+    }
+}

@@ -1,0 +1,114 @@
+
+.contact {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: visible;
+
+    p {
+        font-family: var(--font-basic);
+        font-size: 16px;
+        font-weight: normal;
+        letter-spacing: var(--letter-spacing);
+        color: var(--clr-muted);
+        opacity: 0;
+        animation: show .3s forwards 1.8s ease-in;
+    }
+
+    .contact-form {
+        position: relative;
+        overflow: visible;
+        max-width: 469px;
+        width: 100%;
+        background: rgba(var(--clr-primary-rgb), .09);
+        border: 1px solid rgba(255, 255, 255, .13);
+        @include bgBlur(13px);
+        padding: 32px 32px 50px;
+        opacity: 0;
+        animation: show .3s forwards 2.2s ease-in;
+
+        & form {
+            overflow: visible;
+        }
+
+        & label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: var(--letter-spacing);
+            text-transform: uppercase;
+            color: var(--clr-primary);
+        }
+
+        & input,
+        & textarea {
+            width: 100%;
+            background: var(--clr-bg);
+            color: var(--clr-muted);
+            border: 1px solid #333;
+            padding: 14px 19px;
+            font-family: var(--font-basic);
+            font-size: 14px;
+            letter-spacing: var(--letter-spacing);
+            margin-bottom: 1.5rem;
+            outline: none;
+        }
+
+        & textarea {
+            min-height: 8rem;
+            resize: vertical;
+        }
+
+        & .buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .buttons {
+            @include flexCenter(16px);
+            position: absolute;
+            left: 50%;
+            bottom: -65px;
+            transform: translate(-50%);
+        }
+
+        .btn {
+            min-width: 226px;
+            padding: 6px 19px;
+            font-family: var(--big-shoulders-display);
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: var(--letter-spacing);
+            text-transform: uppercase;
+            cursor: pointer;
+            border: 1px solid #333;
+            background: transparent;
+            color: var(--clr-text);
+            transition: background 0.2s, color 0.2s, opacity 0.2s;
+        }
+
+        .btn.primary {
+            background: var(--clr-primary);
+            color: var(--clr-bg);
+            border: none;
+        }
+
+        .btn.primary:hover {
+            color: var(--clr-text);
+            border: 1px solid var(--clr-text);
+        }
+
+        .btn.secondary {
+            color: var(--clr-primary);
+            border: 1px solid #262626;
+        }
+
+        .btn.secondary:hover {
+            color: var(--clr-text);
+            border: 1px solid var(--clr-text);
+        }
+    }
+
+}

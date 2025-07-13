@@ -1,0 +1,292 @@
+@import url("https://fonts.googleapis.com/css2?family=Iceland&display=swap");
+@import "grid";
+@import "mixins";
+@import "hero";
+@import "info";
+@import "basic";
+@import "active-quest";
+@import "navigation";
+@import "contact";
+@import "about";
+@import "accordion";
+@import "projects";
+
+/* 1. CSS reset & sane defaults */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. Root design tokens (override in dark‑mode if you like) */
+:root {
+  /* layout */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+
+  /* colour */
+  --clr-bg: #000003;
+  --clr-primary: #e84a4a;
+  --clr-primary-rgb: 232, 74, 74;
+  --clr-secondary: #7dff68;
+  --clr-text: #ffffff;
+  --clr-text-secondary: #b2b7ba;
+  --clr-muted: #7a7a7a;
+  --clr-border: #242425;
+
+  /* typography */
+  --font-basic: "Iceland", sans-serif;
+  --font-accent: --big-shoulders-display;
+
+  --letter-spacing: 0.075;
+
+  /* radius & shadow */
+  --radius: 0.75rem;
+  --shadow-md: 0 2px 6px rgba(0 0 0 / 0.35);
+
+  /* media query break points */
+  --mobile-bp: 393px;
+  --tablet-bp: 834px;
+  --full-screen-bp: 1080px;
+}
+
+html,
+body {
+  height: 100%;
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  font-family: var(--font-basic);
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  line-height: 1.6;
+}
+
+body {
+  background: url("/Corner.webp") no-repeat;
+  background-position: top right;
+  padding: 0.5rem;
+  @include corner-animation(8px, 7px, "small-corners");
+}
+
+/* 3. Headings & text scale */
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+h2 {
+  font-size: clamp(1.9rem, 4vw, 2.65rem);
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+p,
+li {
+  font-size: 1rem;
+  max-width: 60ch;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* 4. Links & interactive elements */
+a {
+  color: var(--clr-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--clr-secondary);
+}
+
+button {
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+}
+
+/* 5. Images & media */
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  position: relative;
+  max-width: 1767px;
+  width: 100%;
+  height: 100%;
+  padding: max(9px, 24px) max(8px, 4%);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+.bage {
+  height: 23px;
+  padding: 1px 4px;
+  color: var(--clr-text);
+  background: var(--clr-primary);
+  cursor: pointer;
+}
+
+.decoration {
+  position: relative;
+  display: block;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 23px;
+  letter-spacing: var(--letter-spacing);
+  padding-left: 10px;
+  height: 23px;
+  padding: 1px 4px;
+  color: var(--clr-text);
+  background: var(--clr-border);
+  overflow: hidden;
+
+  &::after {
+      content: url('/union.svg');
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      right: 11px;
+      top: -9px;
+  }
+}
+
+.content {
+  position: relative;
+  margin-top: 32px;
+  max-height: calc(100vh - 100px);
+  height: 100%;
+}
+
+.text-primary {
+  color: var(--clr-primary) !important;
+}
+
+.section-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+  margin-bottom: 42px;
+
+  h2 {
+    position: relative;
+    font-family: var(--font-basic);
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: var(--letter-spacing);
+    font-weight: normal;
+    color: var(--clr-text);
+    text-transform: uppercase;
+    opacity: 0;
+    animation: show 0.5s forwards 1s ease-in;
+
+    &::before {
+      content: url(/vector.webp);
+      position: absolute;
+      top: 50%;
+      right: calc(100% + 43px);
+      transform: translateY(-50%);
+      opacity: 0;
+      animation: rightShowup 0.5s forwards 1.5s ease-in;
+    }
+  }
+
+  p {
+    font-family: var(--font-basic);
+    font-size: 16px;
+    font-weight: normal;
+    letter-spacing: var(--letter-spacing);
+    color: var(--clr-muted);
+    opacity: 0;
+    animation: show 0.3s forwards 1.8s ease-in;
+  }
+}
+
+.section-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 95%;
+  margin: 0 auto;
+  padding-bottom: 10rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
+  opacity: 0;
+  animation: show 0.5s forwards 1.7s ease-in;
+
+  /* Target the entire scrollbar */
+  &::-webkit-scrollbar {
+    width: 4px;
+    background: transparent;
+    opacity: 0;
+  }
+
+  /* Background of the scrollbar track */
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* The draggable handle */
+  &::-webkit-scrollbar-thumb {
+    background: rgba(var(--clr-primary-rgb), 0.1);
+    border-radius: 4px;
+  }
+
+  /* On hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(var(--clr-primary-rgb), 0.3);
+    opacity: 0.1;
+  }
+}
+
+@keyframes rightShowup {
+  from {
+    right: calc(400% + 43px);
+    opacity: 1;
+  }
+
+  to {
+    right: calc(100% + 43px);
+    opacity: 1;
+  }
+}
+
+@keyframes show {
+  to {
+    opacity: 1;
+  }
+}

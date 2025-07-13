@@ -1,0 +1,185 @@
+
+$card-width: 280px; // Ширина картки (можете змінювати)
+$card-height: 400px; // Висота картки
+$card-spacing: 40px; // Відступ між картками
+$perspective-distance: 1000px; // Відстань перспективи
+$rotate-angle: 25deg;
+
+.creations {
+  max-width: 310px;
+  width: 100%;
+  padding: 2px 0.5rem 0;
+  @include flexCenter(1rem);
+  align-items: flex-start;
+  perspective: $perspective-distance;
+  perspective-origin: center center;
+
+  &-item {
+    transform-style: preserve-3d;
+    transition: all 1.2s ease-out;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid transparent;
+
+    &:hover {
+      background: rgba(var(--clr-primary-rgb), 0.1);
+      border: 1px solid rgba(var(--clr-primary-rgb), 0.3);
+    }
+  }
+
+  &-card {
+    position: relative;
+    min-width: 310px;
+    width: 100%;
+    height: 382px;
+    padding: 1.125rem;
+    @include corner-animation(17px, 17px, "large-corners");
+
+    .large-corners {
+      div {
+        animation-duration: 0s !important;
+      }
+    }
+
+    &-content {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-family: var(--font-basic);
+      font-size: 0.875rem;
+      line-height: 1;
+      letter-spacing: var(--letter-spacing);
+      text-transform: uppercase;
+
+      & .buttons {
+        text-align: right;
+
+        & a {
+          display: inline-block;
+          padding: 9px 11px;
+          border: 1px solid var(--clr-primary);
+          color: var(--clr-text);
+
+          &:hover,
+          &:active {
+            background-color: var(--clr-primary);
+            color: var(--clr-text);
+          }
+        }
+      }
+    }
+  }
+
+  &-description {
+    padding: 17px;
+    text-transform: uppercase;
+
+    & h2 {
+      font-family: var(--big-shoulders-display);
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: var(--letter-spacing);
+      color: var(--clr-primary);
+
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+
+      &::after {
+        content: "";
+        flex: 1 2 auto;
+        margin-left: 0.1rem;
+        border-bottom: 3px dotted currentColor;
+        height: 0;
+        transform: translateY(-0.1rem); // vertically align
+      }
+    }
+
+    & p {
+      font-family: var(--font-basic);
+      font-size: 0.875rem;
+      line-height: 1;
+      letter-spacing: var(--letter-spacing);
+      color: var(--clr-text);
+    }
+
+    & div {
+      position: relative;
+      margin-top: 17px;
+      margin-bottom: 9px;
+      min-height: 50px;
+      font-family: var(--font-basic);
+      font-size: 0.875rem;
+      line-height: 1;
+      letter-spacing: var(--letter-spacing);
+      color: var(--clr-muted);
+    }
+  }
+
+  &-background {
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .blur-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      -webkit-backdrop-filter: blur(75px);
+      backdrop-filter: blur(75px);
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
+  }
+
+  &-buttons {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 100;
+    @include flexCenter(1rem);
+    & button {
+      font-size: 2rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--clr-primary);
+      padding: 5px;
+      text-align: center;
+      transition: all 0.3s ease;
+
+      &:hover {
+        opacity: 0.7;
+      }
+      &:active {
+        color: var(--clr-text);
+      }
+    }
+  }
+}
+
+.move {
+  @include flexCenter(0.1rem);
+
+  .creations-item {
+    &:nth-child(1) {
+      transform: rotateY(-$rotate-angle) scale(0.81);
+    }
+
+    &:nth-child(2) {
+      transform: rotateY(0deg) translateZ(0px);
+    }
+
+    &:nth-child(3) {
+      transform: rotateY($rotate-angle) scale(0.81);
+    }
+  }
+}

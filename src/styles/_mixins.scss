@@ -1,0 +1,52 @@
+@mixin corner-animation($corner-size, $shift-size, $prefix) {
+  .#{$prefix} > div {
+    position: absolute;
+    width: $corner-size;
+    height: $corner-size;
+    background: url('/#{$prefix}.svg') no-repeat center;
+    background-size: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-duration: 0.8s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+
+    &:nth-child(1) { animation-name: #{$prefix}-moveTopLeft; }
+    &:nth-child(2) { animation-name: #{$prefix}-moveTopRight; }
+    &:nth-child(3) { animation-name: #{$prefix}-moveBottomRight; }
+    &:nth-child(4) { animation-name: #{$prefix}-moveBottomLeft; }
+  }
+
+  @keyframes #{$prefix}-moveTopLeft {
+    to {
+      top: -1px;
+      left: -1px;
+      transform: rotate(-90deg);
+    }
+  }
+
+  @keyframes #{$prefix}-moveTopRight {
+    to {
+      top: -1px;
+      left: calc(100% - #{$shift-size});
+      transform: none;
+    }
+  }
+
+  @keyframes #{$prefix}-moveBottomRight {
+    to {
+      top: calc(100% - #{$shift-size});
+      left: calc(100% - #{$shift-size});
+      transform: rotate(90deg);
+    }
+  }
+
+  @keyframes #{$prefix}-moveBottomLeft {
+    to {
+      top: calc(100% - #{$shift-size});
+      left: -1px;
+      transform: rotate(180deg);
+    }
+  }
+}

@@ -1,0 +1,58 @@
+.hero {
+    width: 100%;
+    margin: 0 auto;
+
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        background:
+            #000003,
+            url('/hero-background.webp') no-repeat;
+        background-blend-mode: multiply;
+        background-size: 100%;
+        z-index: -1;
+    }
+    
+    .person {
+        position: absolute;
+        bottom: 90px;
+        right: 50%;
+        transform: translateX(50%);
+        width: min(700px, 32vw);
+        opacity: 0;
+        animation: apperrence 700ms linear 1s forwards;
+        z-index: -1;
+    }
+}
+
+
+
+
+@keyframes apperrence {
+    0%   { opacity: 0.1;}
+    100% { opacity: .95; }
+}
+
+.hero-2 {
+    background:
+        #000003,
+        url('/hero-background.webp') no-repeat;
+    background-size: 100%;
+
+
+    
+    .person {
+        position: absolute;
+        bottom: 0;
+        right: 50%;
+        transform: translateX(50%);
+        width: 450px;
+        opacity: 0;
+        animation: apperrence 700ms linear 1s forwards;
+        z-index: -1;
+    }
+}
