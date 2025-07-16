@@ -1,9 +1,11 @@
 import Image from 'next/image';
+import BasicUserInfo from './BasicUserInfo';
 
 export default function Hero() {
     return(
       <div className="content-container hero-2">
         <div className="small-corners"><div></div><div></div><div></div><div></div></div>
+        <BasicUserInfo />
         <Image 
             src="/warrior.webp" 
             alt="warrior character"
