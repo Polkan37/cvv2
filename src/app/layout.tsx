@@ -45,21 +45,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-
-
-{/* <div className="wrapper">
-        <div className="header">header</div>
-        <div className="sidebar">sidebar</div>
-        <main className="main">
-          <div className="content-container">
-            <div className="small-corners"><div></div><div></div><div></div><div></div></div>
-
-            content
-          </div>
-        </main>
-        <div className="active-quest">Active quest</div>
-        <nav className="navbar">navbar</nav>
-      </div>
-    
-    */}

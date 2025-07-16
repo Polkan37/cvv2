@@ -16,7 +16,7 @@ type Project = {
 const projects: Project[] = [
   {
     id: 1,
-    date: 'published 1 months ago',
+    date: 'published 10 months ago',
     image: '/projects/portfolio-7.png',
     title: 'Tweet_IT',
     description: 'Twitter variation',
