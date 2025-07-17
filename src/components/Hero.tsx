@@ -14,6 +14,7 @@ export default function Hero() {
             className="person"
             priority
           />
+          <div className="box">Chamfered Box</div>
       </div>
     );
 }
