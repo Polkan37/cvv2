@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { BigShouldersDisplay } from '@/fonts';
 
-import "../styles/globals.scss";
+import "../styles/index.scss";
 
 import AOSProvider from '@/components/AOSProvider';
+import { Button } from '@/components/Button';
+import { Title } from '@/components/Title';
 import Navigation from "@/components/Navigation";
 import GlobalInfo from "@/components/GlobalInfo";
 import BasicUserInfo from "@/components/BasicUserInfo";
@@ -27,6 +29,33 @@ export default function RootLayout({
       <body className={BigShouldersDisplay.className}>
         <AOSProvider>
           <div className="wrapper">
+            <div className="">
+              <p>button primary</p>
+              <Button >send message [enter]</Button>
+            </div>
+            <div className="">
+              <p>button secondary</p>
+              <Button $type="secondary">discard [esc]</Button>
+            </div>
+            <div className="">
+              <p>button bordered</p>
+              <Button $type="bordered">view live</Button>
+            </div>
+          </div>
+          <div className="">
+          <Title $type="h1" $size='200px'><span>F</span>ront<span>E</span>nd</Title>
+          <Title $type="h1" $size='300px'>Dev</Title>
+          <Title $type="h2" $size='42px'>Section Title</Title>
+          <Title $type="h4" $size='1rem'>Small Heading</Title>
+          <Title>Default H1</Title>
+          </div>
+        </AOSProvider>
+      </body>
+    </html>
+  );
+}
+
+{/* <div className="wrapper">
             <div className="header">
               <GlobalInfo />
             </div>
@@ -39,9 +68,4 @@ export default function RootLayout({
             <ActiveQuest />
             
             <Navigation />
-          </div>
-        </AOSProvider>
-      </body>
-    </html>
-  );
-}
+          </div> */}
