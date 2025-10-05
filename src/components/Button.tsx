@@ -5,8 +5,9 @@ import { colors, fonts } from '@/styles/variables';
 
 type ButtonType = 'primary' | 'secondary' | 'bordered';
 
-type ButtonProps = {
+export type ButtonProps = {
     $type?: ButtonType;
+    children?: React.ReactNode;
 };
 
 const typeStyles: Record<ButtonType, ReturnType<typeof css>> = {
